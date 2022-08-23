@@ -32,5 +32,8 @@ class Config:
         self.seed = 2022
         self.nheads = 2
 
-        self.gat_channel_list = [64, 64, 64, 64, 64, 64, 64, 64, len(self.num_of_predict)]
-        self.tcn_channel_list = [len(self.in_channels), 16, 16, 16, 16]
+        gat_filter = [64] * 8
+        tcn_filter = [16] * 4
+        self.gat_channel_list = gat_filter + [len(self.num_of_predict)]
+        self.tcn_channel_list = [len(self.in_channels)] + tcn_filter
+
